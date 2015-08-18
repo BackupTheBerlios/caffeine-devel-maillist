@@ -1,0 +1,50 @@
+From bogus@does.not.exist.com  Wed Mar 14 13:21:11 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 12:21:11 -0000
+Subject: No subject
+Message-ID: <mailman.0.1331727670.29634.caffeine-devel@lists.berlios.de>
+
+will look at your code and pick interesting ideas.
+For now I would like to ask you to add my site on your link page, I
+will do the same.
+
+Regards
+Pavel
+
+
+On Fri, Nov 6, 2009 at 4:40 PM, Bruno Fernandez-Ruiz
+<brunofr at olympum.com> wrote:
+> Pavel
+>
+> Good stuff. Caffeine is not actively maintained, so if you want we can
+> discuss possibilities to merge projects.
+>
+> -b
+>
+> On 4 Nov 2009, at 14:03, Pavel =C5=A0avara wrote:
+>
+>> Hello Caffeine people,
+>>
+>> I just found your project. A bit late, because if I found you earlier
+>> I would probably join you.
+>> Anyway, I created http://jni4net.sf.net/
+>> which is very similar to Caffeine. It's JNI bridge implemented in C#.
+>> Same as you I generate proxies for classes and forward calls.
+>> I got little bit further, because I can call from Java to .NET as well.
+>>
+>> I explain how it works on my blog here
+>> http://zamboch.blogspot.com/search/label/jni4net
+>>
+>> I would like to ask you to let me know if you have any ideas or comments=
+.
+>>
+>> Thanks
+>> Pavel Savara
+>> _______________________________________________
+>> Caffeine-devel mailing list
+>> Caffeine-devel at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/caffeine-devel
+>
+>
+
+

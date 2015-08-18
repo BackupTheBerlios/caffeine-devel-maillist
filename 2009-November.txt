@@ -1,0 +1,83 @@
+From pavel.savara at gmail.com  Wed Nov  4 23:03:57 2009
+From: pavel.savara at gmail.com (=?UTF-8?Q?Pavel_=C5=A0avara?=)
+Date: Wed, 4 Nov 2009 23:03:57 +0100
+Subject: [Caffeine-devel] jni4net
+Message-ID: <62ddb6fb0911041403v659f935cnb0063a53532f6779@mail.gmail.com>
+
+Hello Caffeine people,
+
+I just found your project. A bit late, because if I found you earlier
+I would probably join you.
+Anyway, I created http://jni4net.sf.net/
+which is very similar to Caffeine. It's JNI bridge implemented in C#.
+Same as you I generate proxies for classes and forward calls.
+I got little bit further, because I can call from Java to .NET as well.
+
+I explain how it works on my blog here
+http://zamboch.blogspot.com/search/label/jni4net
+
+I would like to ask you to let me know if you have any ideas or comments.
+
+Thanks
+Pavel Savara
+
+
+From brunofr at olympum.com  Fri Nov  6 16:40:59 2009
+From: brunofr at olympum.com (Bruno Fernandez-Ruiz)
+Date: Fri, 6 Nov 2009 07:40:59 -0800
+Subject: [Caffeine-devel] jni4net
+In-Reply-To: <62ddb6fb0911041403v659f935cnb0063a53532f6779@mail.gmail.com>
+References: <62ddb6fb0911041403v659f935cnb0063a53532f6779@mail.gmail.com>
+Message-ID: <443C4013-013E-4D54-98CE-034282B6DA37@olympum.com>
+
+Pavel
+
+Good stuff. Caffeine is not actively maintained, so if you want we can  
+discuss possibilities to merge projects.
+
+-b
+
+On 4 Nov 2009, at 14:03, Pavel ?avara wrote:
+
+> Hello Caffeine people,
+>
+> I just found your project. A bit late, because if I found you earlier
+> I would probably join you.
+> Anyway, I created http://jni4net.sf.net/
+> which is very similar to Caffeine. It's JNI bridge implemented in C#.
+> Same as you I generate proxies for classes and forward calls.
+> I got little bit further, because I can call from Java to .NET as  
+> well.
+>
+> I explain how it works on my blog here
+> http://zamboch.blogspot.com/search/label/jni4net
+>
+> I would like to ask you to let me know if you have any ideas or  
+> comments.
+>
+> Thanks
+> Pavel Savara
+> _______________________________________________
+> Caffeine-devel mailing list
+> Caffeine-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/caffeine-devel
+
+
+
+From pavel.savara at gmail.com  Sat Nov  7 09:33:17 2009
+From: pavel.savara at gmail.com (=?UTF-8?Q?Pavel_=C5=A0avara?=)
+Date: Sat, 7 Nov 2009 09:33:17 +0100
+Subject: [Caffeine-devel] jni4net
+In-Reply-To: <443C4013-013E-4D54-98CE-034282B6DA37@olympum.com>
+References: <62ddb6fb0911041403v659f935cnb0063a53532f6779@mail.gmail.com>
+	<443C4013-013E-4D54-98CE-034282B6DA37@olympum.com>
+Message-ID: <62ddb6fb0911070033q5db917e6nf326597e424fac2f@mail.gmail.com>
+
+Hi Bruno,
+
+jni4net is too young to take over any project yet. I propose we wait
+couple of months how it will be accepted by people.
+If you (or anyone from your team) would like to join jni4net, you are
+more than welcome.
+For start I would appreciate if you do code review and provide feedback.
+

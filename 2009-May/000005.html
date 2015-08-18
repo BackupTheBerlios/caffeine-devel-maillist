@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Caffeine-devel] invoking .net dll from java --regarding
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/caffeine-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20invoking%20.net%20dll%20from%20java%20--regarding&In-Reply-To=%3CBFD32504-7C07-4B90-8D92-FFE7B89D9862%40olympum.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Caffeine-devel] invoking .net dll from java --regarding</H1>
+    <B>Bruno Fernandez-Ruiz</B> 
+    <A HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20invoking%20.net%20dll%20from%20java%20--regarding&In-Reply-To=%3CBFD32504-7C07-4B90-8D92-FFE7B89D9862%40olympum.com%3E"
+       TITLE="[Caffeine-devel] invoking .net dll from java --regarding">brunofr at olympum.com
+       </A><BR>
+    <I>Thu May 28 09:24:28 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[Caffeine-devel] invoking .net dll from java --regarding
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caffeine will not help you with this. to invoke a .net dll function  
+you need to create the CLR, something that is not possible from Java.  
+A possibility though is to use the embedded Mono runtime function,  
+instantiate the Mono CLR from JNI/C, and call the JNI/C function from  
+Java (your own dll).
+
+On 28 May 2009, at 07:30, abhishek reddy wrote:
+
+&gt;<i> hi every one,
+</I>&gt;<i>
+</I>&gt;<i> I have a requirement, where i need to access .Net dll from java.  
+</I>&gt;<i> Possibly invoking a dll function from java
+</I>&gt;<i> Please let me know if it is possible using caffeine
+</I>&gt;<i>
+</I>&gt;<i> thanks in advance.
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> Abhishek
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Caffeine-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/caffeine-devel">Caffeine-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/caffeine-devel">https://lists.berlios.de/mailman/listinfo/caffeine-devel</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[Caffeine-devel] invoking .net dll from java --regarding
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/caffeine-devel">More information about the Caffeine-devel
+mailing list</a><br>
+</body></html>

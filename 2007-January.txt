@@ -1,0 +1,351 @@
+From inacio.ferrarini at gmail.com  Sun Jan 21 01:05:24 2007
+From: inacio.ferrarini at gmail.com (=?ISO-8859-1?Q?J_In=E1cio_Ferrarini?=)
+Date: Sat, 20 Jan 2007 21:05:24 -0300
+Subject: [Caffeine-devel] Problems Regarding use of String
+Message-ID: <6af2af240701201605p60fddd11gba5096f5683579ff@mail.gmail.com>
+
+Hi there.
+
+I am using the stable (0.1) version, with java 1.5.0_10-b03, from Sun, in
+windows XP SP2, Visual Studio 2005 (with latest updates).
+I am using the proxy classes the generator created for me.
+
+When I run the example, I get this output:
+
+>> Iniciando testes com o Caffeine
+Caffeine JNI.NET 0.1.0.0, (c) 2003, 2004 The Olympum Group, Ltd. and the
+individ
+uals listed on the ChangeLog entries.
+length: 5
+char(0): t
+char(1): s
+char(2): e
+char(3):
+char(4):
+ p.getNome() ==
+>> Finalizando testes com o Caffeine
+
+I am thinking that I should try to translate the string I pass (from .Net)
+to UTF-8 or something like that.
+
+Does someone have any Idea about it?
+
+Thanks in advance,
+
+- In?cio Ferrarini.
+
+
+
+--------- file:
+Program.cs-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using br.ferrarini.testes.bridgedotnet.dto;
+
+namespace TesteCaffeine {
+ class Program {
+  static void Main(string[] args) {
+   Console.WriteLine(">> Iniciando testes com o Caffeine");
+
+   try
+   {
+    Pessoa p = new Pessoa();
+    p.setNome(new java.lang.String("teste"));
+    Console.WriteLine(" p.getNome() == " + teste(p.getNome()));
+   }
+   catch (Exception e)
+   {
+    Console.WriteLine(e.InnerException);
+   }
+
+   Console.WriteLine(">> Finalizando testes com o Caffeine");
+   Console.ReadLine();
+  }
+
+  protected static String teste(java.lang.String str)
+  {
+   Console.WriteLine("length: " + str.length());
+   for (int i = 0; i < str.length(); i++)
+   {
+    Console.WriteLine("char(" + i + "): " + str.charAt(i));
+
+   }
+   return null;
+  }
+ }
+}
+
+--------- End of file:
+Program.cs-----------------------------------------------------------------
+
+--------- file:
+Pessoa.cs-----------------------------------------------------------------
+
+using System;
+using Caffeine.Jni;
+
+namespace br.ferrarini.testes.bridgedotnet.dto {
+ public class Pessoa : java.lang.Object {
+  readonly static JClass clazz;
+  readonly static JConstructor ctor0;
+  readonly static JConstructor ctor1;
+  readonly static JMethod getCodigo_mid0;
+  readonly static JMethod getNome_mid1;
+  readonly static JMethod setCodigo_mid2;
+  readonly static JMethod getSexo_mid3;
+  readonly static JMethod setSexo_mid4;
+  readonly static JMethod setNome_mid5;
+  readonly static JMethod getByteArray_mid6;
+  readonly static JMethod setByteArray_mid7;
+
+  static Pessoa() {
+   clazz = JClass.ForName("br/ferrarini/testes/bridgedotnet/dto/Pessoa");
+   ctor0 = clazz.GetConstructor("()V");
+   ctor1 = clazz.GetConstructor("(J)V");
+   getCodigo_mid0 = clazz.GetMethod("getCodigo", "()J");
+   getNome_mid1 = clazz.GetMethod("getNome", "()Ljava/lang/String;");
+   setCodigo_mid2 = clazz.GetMethod("setCodigo", "(J)V");
+   getSexo_mid3 = clazz.GetMethod("getSexo", "()C");
+   setSexo_mid4 = clazz.GetMethod("setSexo", "(C)V");
+   setNome_mid5 = clazz.GetMethod("setNome", "(Ljava/lang/String;)V");
+   getByteArray_mid6 = clazz.GetMethod("getByteArray", "()[B");
+   setByteArray_mid7 = clazz.GetMethod("setByteArray", "([B)V");
+  }
+
+  public Pessoa() :
+   base(ctor0)
+  { }
+
+  public Pessoa(long arg0) :
+   base(ctor1, arg0)
+  { }
+
+  protected Pessoa(JConstructor ctr, params object[] args) : base(ctr, args)
+{ }
+
+  public Pessoa(JObject other) : base(other) { }
+
+  public static new JClass JClass {
+   get {
+    return clazz;
+   }
+  }
+
+  public virtual long getCodigo() {
+   long ret = getCodigo_mid0.CallLong(this);
+   return ret;
+  }
+
+  public virtual java.lang.String getNome() {
+   java.lang.String ret = new java.lang.String
+(getNome_mid1.CallObject(this));
+   return ret;
+  }
+
+  public virtual void setCodigo(long arg0) {
+   setCodigo_mid2.CallVoid(this, arg0);
+  }
+
+  public virtual char getSexo() {
+   char ret = getSexo_mid3.CallChar(this);
+   return ret;
+  }
+
+  public virtual void setSexo(char arg0) {
+   setSexo_mid4.CallVoid(this, arg0);
+  }
+
+  public virtual void setNome(java.lang.String arg0) {
+   setNome_mid5.CallVoid(this, arg0);
+  }
+
+  public virtual byte[] getByteArray() {
+   JObject ret = getByteArray_mid6.CallObject(this);
+   JByteArray array = new JByteArray(ret);
+   return (byte[]) array.Elements;
+  }
+
+  public virtual void setByteArray(byte[] arg0) {
+   setByteArray_mid7.CallVoid(this, arg0);
+  }
+
+ }
+}
+
+--------- End of file:
+Pessoa.cs-----------------------------------------------------------------
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070120/5a82bbb0/attachment.html>
+
+From brunofr at olympum.com  Sun Jan 21 09:26:43 2007
+From: brunofr at olympum.com (Bruno Fernandez-Ruiz)
+Date: Sun, 21 Jan 2007 08:26:43 +0000
+Subject: [Caffeine-devel] Problems Regarding use of String
+In-Reply-To: <6af2af240701201605p60fddd11gba5096f5683579ff@mail.gmail.com>
+References: <6af2af240701201605p60fddd11gba5096f5683579ff@mail.gmail.com>
+Message-ID: <b69b4f0a0701210026s3759230fmfe7fefa61515ffe3@mail.gmail.com>
+
+Hi
+
+On 1/21/07, J In?cio Ferrarini <inacio.ferrarini at gmail.com> wrote:
+
+>     Console.WriteLine(" p.getNome() == " + teste(p.getNome()));
+>
+
+Caffeine will instantiate a new .NET proxy object for each getNome() method
+call, and therefore the equals operator will fail since there are two
+different object identities. Try equals() instead.
+
+On 1/21/07, J In?cio Ferrarini <inacio.ferrarini at gmail.com> wrote:
+
+>     Console.WriteLine("char(" + i + "): " + str.charAt(i));
+>
+
+I have not tested Caffeine with Java5. Java5 changed the representation of
+Unicode for String and Character. Basically the problem is that not all
+characters in certain pages can be represented in UTF-16 as a 16-bit type,
+so for some pages Java used two 16-bit types. String.length() and
+String.charAt() do not work correctly because of this "pairing".
+
+You would be probably better off doing byte[] comparison.
+
+Bruno
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070121/72c4531b/attachment.html>
+
+From inacio.ferrarini at gmail.com  Sun Jan 21 13:02:34 2007
+From: inacio.ferrarini at gmail.com (=?ISO-8859-1?Q?J_In=E1cio_Ferrarini?=)
+Date: Sun, 21 Jan 2007 09:02:34 -0300
+Subject: [Caffeine-devel] Problems Regarding use of String
+In-Reply-To: <b69b4f0a0701210026s3759230fmfe7fefa61515ffe3@mail.gmail.com>
+References: <6af2af240701201605p60fddd11gba5096f5683579ff@mail.gmail.com>
+	<b69b4f0a0701210026s3759230fmfe7fefa61515ffe3@mail.gmail.com>
+Message-ID: <6af2af240701210402rc9997cbg81958062762d0df7@mail.gmail.com>
+
+Hi Again,
+
+I am novice to C# (and .Net)... so, there is some way in C# that I can force
+the String I am going to pass to java.lang.String constructor be in UTF-8 or
+UTF-16?
+
+I changed my Program.cs file as follows and the exit is:
+
+>> Iniciando testes com o Caffeine
+Caffeine JNI.NET 0.1.0.0, (c) 2003, 2004 The Olympum Group, Ltd. and the
+individ
+uals listed on the ChangeLog entries.
+length: 5
+>> c[0]:
+>> c[1]:
+>> c[2]:
+>> c[3]:
+>> c[4]:
+ value of p.getNome() :
+>> Finalizando testes com o Caffeine
+
+
+PS: Sorry, it was not clear enough... the output was not comparing the
+strigs, just printing it on a more fashionable way ...
+
+
+Thanks for your patience and time,
+
+------------------File: Program.cs
+ ---------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using br.ferrarini.testes.bridgedotnet.dto;
+
+namespace TesteCaffeine {
+ class Program {
+  static void Main(string[] args) {
+   Console.WriteLine(">> Iniciando testes com o Caffeine");
+
+   try
+   {
+    Pessoa p = new Pessoa();
+
+    byte[] b = new byte[5];
+    b[0] = 65;
+    b[1] = 65;
+    b[2] = 65;
+    b[3] = 65;
+    b[4] = 65;
+
+    p.setNome(new java.lang.String(b));
+    Console.WriteLine(" value of p.getNome() : " + printStr(p.getNome()));
+   }
+   catch (Exception e)
+   {
+    Console.WriteLine(e.InnerException);
+   }
+
+   Console.WriteLine(">> Finalizando testes com o Caffeine");
+   Console.ReadLine();
+  }
+
+  protected static String printStr(java.lang.String str)
+  {
+   Console.WriteLine("length: " + str.length());
+
+   char[] c = str.toCharArray();
+
+   for (int i=0;i<c.Length;i++) {
+    Console.WriteLine(">> c[" + i + "]: " + c[i].ToString());
+   }
+
+
+   /*
+   for (int i = 0; i < str.length(); i++)
+   {
+    Console.WriteLine("char(" + i + "): " + str.charAt(i));
+
+   }
+   */
+
+   return null;
+  }
+ }
+}
+
+
+On 1/21/07, Bruno Fernandez-Ruiz <brunofr at olympum.com> wrote:
+>
+> Hi
+>
+> On 1/21/07, J In?cio Ferrarini <inacio.ferrarini at gmail.com> wrote:
+>
+> >      Console.WriteLine(" p.getNome() == " + teste(p.getNome()));
+> >
+>
+> Caffeine will instantiate a new .NET proxy object for each getNome()
+> method call, and therefore the equals operator will fail since there are two
+> different object identities. Try equals() instead.
+>
+> On 1/21/07, J In?cio Ferrarini <inacio.ferrarini at gmail.com> wrote:
+>
+> >      Console.WriteLine("char(" + i + "): " + str.charAt(i));
+> >
+>
+> I have not tested Caffeine with Java5. Java5 changed the representation of
+> Unicode for String and Character. Basically the problem is that not all
+> characters in certain pages can be represented in UTF-16 as a 16-bit type,
+> so for some pages Java used two 16-bit types. String.length() and
+> String.charAt() do not work correctly because of this "pairing".
+>
+> You would be probably better off doing byte[] comparison.
+>
+> Bruno
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070121/378d122b/attachment.html>
+

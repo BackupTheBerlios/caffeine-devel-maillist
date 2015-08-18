@@ -1,0 +1,28 @@
+From vishalmk19 at gmail.com  Thu Nov 13 05:23:56 2008
+From: vishalmk19 at gmail.com (Vishal Kakapuri)
+Date: Thu, 13 Nov 2008 09:53:56 +0530
+Subject: [Caffeine-devel] Accessing .NET APIs from Java
+Message-ID: <c83143ea0811122023tb2509b2jbfe0490cc2171507@mail.gmail.com>
+
+Dear Caffeine Members,
+
+While searching for some information to access .NET APIs from java I
+came across this "Caffeine" - which I understand does something in the
+reverse order.
+
+I want to access the APIs in a .NET assembly or DLL file from Java code.
+
+I found "dotnetfromjava" while googling around but  I have some
+problems using that and the documentation guide to use that is not
+proper and am facing huge exceptions while using that.
+
+I would appreciate if anybody can tell me some information on this. Or
+if Caffeine is able to do it.
+
+I would also appreciate if anyone could give me any pointers to some
+information on this, which can help me do it.
+
+Thank You,
+Vishal
+
+

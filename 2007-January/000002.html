@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Caffeine-devel] Problems Regarding use of String
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/caffeine-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20Problems%20Regarding%20use%20of%20String&In-Reply-To=%3C6af2af240701210402rc9997cbg81958062762d0df7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000001.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Caffeine-devel] Problems Regarding use of String</H1>
+    <B>J In&#225;cio Ferrarini</B> 
+    <A HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20Problems%20Regarding%20use%20of%20String&In-Reply-To=%3C6af2af240701210402rc9997cbg81958062762d0df7%40mail.gmail.com%3E"
+       TITLE="[Caffeine-devel] Problems Regarding use of String">inacio.ferrarini at gmail.com
+       </A><BR>
+    <I>Sun Jan 21 13:02:34 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000001.html">[Caffeine-devel] Problems Regarding use of String
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Again,
+
+I am novice to C# (and .Net)... so, there is some way in C# that I can force
+the String I am going to pass to java.lang.String constructor be in UTF-8 or
+UTF-16?
+
+I changed my Program.cs file as follows and the exit is:
+
+&gt;&gt;<i> Iniciando testes com o Caffeine
+</I>Caffeine JNI.NET 0.1.0.0, (c) 2003, 2004 The Olympum Group, Ltd. and the
+individ
+uals listed on the ChangeLog entries.
+length: 5
+&gt;&gt;<i> c[0]:
+</I>&gt;&gt;<i> c[1]:
+</I>&gt;&gt;<i> c[2]:
+</I>&gt;&gt;<i> c[3]:
+</I>&gt;&gt;<i> c[4]:
+</I> value of p.getNome() :
+&gt;&gt;<i> Finalizando testes com o Caffeine
+</I>
+
+PS: Sorry, it was not clear enough... the output was not comparing the
+strigs, just printing it on a more fashionable way ...
+
+
+Thanks for your patience and time,
+
+------------------File: Program.cs
+ ---------------------------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using br.ferrarini.testes.bridgedotnet.dto;
+
+namespace TesteCaffeine {
+ class Program {
+  static void Main(string[] args) {
+   Console.WriteLine(&quot;&gt;&gt; Iniciando testes com o Caffeine&quot;);
+
+   try
+   {
+    Pessoa p = new Pessoa();
+
+    byte[] b = new byte[5];
+    b[0] = 65;
+    b[1] = 65;
+    b[2] = 65;
+    b[3] = 65;
+    b[4] = 65;
+
+    p.setNome(new java.lang.String(b));
+    Console.WriteLine(&quot; value of p.getNome() : &quot; + printStr(p.getNome()));
+   }
+   catch (Exception e)
+   {
+    Console.WriteLine(e.InnerException);
+   }
+
+   Console.WriteLine(&quot;&gt;&gt; Finalizando testes com o Caffeine&quot;);
+   Console.ReadLine();
+  }
+
+  protected static String printStr(java.lang.String str)
+  {
+   Console.WriteLine(&quot;length: &quot; + str.length());
+
+   char[] c = str.toCharArray();
+
+   for (int i=0;i&lt;c.Length;i++) {
+    Console.WriteLine(&quot;&gt;&gt; c[&quot; + i + &quot;]: &quot; + c[i].ToString());
+   }
+
+
+   /*
+   for (int i = 0; i &lt; str.length(); i++)
+   {
+    Console.WriteLine(&quot;char(&quot; + i + &quot;): &quot; + str.charAt(i));
+
+   }
+   */
+
+   return null;
+  }
+ }
+}
+
+
+On 1/21/07, Bruno Fernandez-Ruiz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/caffeine-devel">brunofr at olympum.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Hi
+</I>&gt;<i>
+</I>&gt;<i> On 1/21/07, J In&#225;cio Ferrarini &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/caffeine-devel">inacio.ferrarini at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;      Console.WriteLine(&quot; p.getNome() == &quot; + teste(p.getNome()));
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> Caffeine will instantiate a new .NET proxy object for each getNome()
+</I>&gt;<i> method call, and therefore the equals operator will fail since there are two
+</I>&gt;<i> different object identities. Try equals() instead.
+</I>&gt;<i>
+</I>&gt;<i> On 1/21/07, J In&#225;cio Ferrarini &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/caffeine-devel">inacio.ferrarini at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;      Console.WriteLine(&quot;char(&quot; + i + &quot;): &quot; + str.charAt(i));
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> I have not tested Caffeine with Java5. Java5 changed the representation of
+</I>&gt;<i> Unicode for String and Character. Basically the problem is that not all
+</I>&gt;<i> characters in certain pages can be represented in UTF-16 as a 16-bit type,
+</I>&gt;<i> so for some pages Java used two 16-bit types. String.length() and
+</I>&gt;<i> String.charAt() do not work correctly because of this &quot;pairing&quot;.
+</I>&gt;<i>
+</I>&gt;<i> You would be probably better off doing byte[] comparison.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070121/378d122b/attachment.html">https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070121/378d122b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000001.html">[Caffeine-devel] Problems Regarding use of String
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/caffeine-devel">More information about the Caffeine-devel
+mailing list</a><br>
+</body></html>

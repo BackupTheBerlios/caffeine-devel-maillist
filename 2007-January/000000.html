@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Caffeine-devel] Problems Regarding use of String
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/caffeine-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20Problems%20Regarding%20use%20of%20String&In-Reply-To=%3C6af2af240701201605p60fddd11gba5096f5683579ff%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Caffeine-devel] Problems Regarding use of String</H1>
+    <B>J In&#225;cio Ferrarini</B> 
+    <A HREF="mailto:caffeine-devel%40lists.berlios.de?Subject=Re%3A%20%5BCaffeine-devel%5D%20Problems%20Regarding%20use%20of%20String&In-Reply-To=%3C6af2af240701201605p60fddd11gba5096f5683579ff%40mail.gmail.com%3E"
+       TITLE="[Caffeine-devel] Problems Regarding use of String">inacio.ferrarini at gmail.com
+       </A><BR>
+    <I>Sun Jan 21 01:05:24 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000001.html">[Caffeine-devel] Problems Regarding use of String
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there.
+
+I am using the stable (0.1) version, with java 1.5.0_10-b03, from Sun, in
+windows XP SP2, Visual Studio 2005 (with latest updates).
+I am using the proxy classes the generator created for me.
+
+When I run the example, I get this output:
+
+&gt;&gt;<i> Iniciando testes com o Caffeine
+</I>Caffeine JNI.NET 0.1.0.0, (c) 2003, 2004 The Olympum Group, Ltd. and the
+individ
+uals listed on the ChangeLog entries.
+length: 5
+char(0): t
+char(1): s
+char(2): e
+char(3):
+char(4):
+ p.getNome() ==
+&gt;&gt;<i> Finalizando testes com o Caffeine
+</I>
+I am thinking that I should try to translate the string I pass (from .Net)
+to UTF-8 or something like that.
+
+Does someone have any Idea about it?
+
+Thanks in advance,
+
+- In&#225;cio Ferrarini.
+
+
+
+--------- file:
+Program.cs-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+using br.ferrarini.testes.bridgedotnet.dto;
+
+namespace TesteCaffeine {
+ class Program {
+  static void Main(string[] args) {
+   Console.WriteLine(&quot;&gt;&gt; Iniciando testes com o Caffeine&quot;);
+
+   try
+   {
+    Pessoa p = new Pessoa();
+    p.setNome(new java.lang.String(&quot;teste&quot;));
+    Console.WriteLine(&quot; p.getNome() == &quot; + teste(p.getNome()));
+   }
+   catch (Exception e)
+   {
+    Console.WriteLine(e.InnerException);
+   }
+
+   Console.WriteLine(&quot;&gt;&gt; Finalizando testes com o Caffeine&quot;);
+   Console.ReadLine();
+  }
+
+  protected static String teste(java.lang.String str)
+  {
+   Console.WriteLine(&quot;length: &quot; + str.length());
+   for (int i = 0; i &lt; str.length(); i++)
+   {
+    Console.WriteLine(&quot;char(&quot; + i + &quot;): &quot; + str.charAt(i));
+
+   }
+   return null;
+  }
+ }
+}
+
+--------- End of file:
+Program.cs-----------------------------------------------------------------
+
+--------- file:
+Pessoa.cs-----------------------------------------------------------------
+
+using System;
+using Caffeine.Jni;
+
+namespace br.ferrarini.testes.bridgedotnet.dto {
+ public class Pessoa : java.lang.Object {
+  readonly static JClass clazz;
+  readonly static JConstructor ctor0;
+  readonly static JConstructor ctor1;
+  readonly static JMethod getCodigo_mid0;
+  readonly static JMethod getNome_mid1;
+  readonly static JMethod setCodigo_mid2;
+  readonly static JMethod getSexo_mid3;
+  readonly static JMethod setSexo_mid4;
+  readonly static JMethod setNome_mid5;
+  readonly static JMethod getByteArray_mid6;
+  readonly static JMethod setByteArray_mid7;
+
+  static Pessoa() {
+   clazz = JClass.ForName(&quot;br/ferrarini/testes/bridgedotnet/dto/Pessoa&quot;);
+   ctor0 = clazz.GetConstructor(&quot;()V&quot;);
+   ctor1 = clazz.GetConstructor(&quot;(J)V&quot;);
+   getCodigo_mid0 = clazz.GetMethod(&quot;getCodigo&quot;, &quot;()J&quot;);
+   getNome_mid1 = clazz.GetMethod(&quot;getNome&quot;, &quot;()Ljava/lang/String;&quot;);
+   setCodigo_mid2 = clazz.GetMethod(&quot;setCodigo&quot;, &quot;(J)V&quot;);
+   getSexo_mid3 = clazz.GetMethod(&quot;getSexo&quot;, &quot;()C&quot;);
+   setSexo_mid4 = clazz.GetMethod(&quot;setSexo&quot;, &quot;(C)V&quot;);
+   setNome_mid5 = clazz.GetMethod(&quot;setNome&quot;, &quot;(Ljava/lang/String;)V&quot;);
+   getByteArray_mid6 = clazz.GetMethod(&quot;getByteArray&quot;, &quot;()[B&quot;);
+   setByteArray_mid7 = clazz.GetMethod(&quot;setByteArray&quot;, &quot;([B)V&quot;);
+  }
+
+  public Pessoa() :
+   base(ctor0)
+  { }
+
+  public Pessoa(long arg0) :
+   base(ctor1, arg0)
+  { }
+
+  protected Pessoa(JConstructor ctr, params object[] args) : base(ctr, args)
+{ }
+
+  public Pessoa(JObject other) : base(other) { }
+
+  public static new JClass JClass {
+   get {
+    return clazz;
+   }
+  }
+
+  public virtual long getCodigo() {
+   long ret = getCodigo_mid0.CallLong(this);
+   return ret;
+  }
+
+  public virtual java.lang.String getNome() {
+   java.lang.String ret = new java.lang.String
+(getNome_mid1.CallObject(this));
+   return ret;
+  }
+
+  public virtual void setCodigo(long arg0) {
+   setCodigo_mid2.CallVoid(this, arg0);
+  }
+
+  public virtual char getSexo() {
+   char ret = getSexo_mid3.CallChar(this);
+   return ret;
+  }
+
+  public virtual void setSexo(char arg0) {
+   setSexo_mid4.CallVoid(this, arg0);
+  }
+
+  public virtual void setNome(java.lang.String arg0) {
+   setNome_mid5.CallVoid(this, arg0);
+  }
+
+  public virtual byte[] getByteArray() {
+   JObject ret = getByteArray_mid6.CallObject(this);
+   JByteArray array = new JByteArray(ret);
+   return (byte[]) array.Elements;
+  }
+
+  public virtual void setByteArray(byte[] arg0) {
+   setByteArray_mid7.CallVoid(this, arg0);
+  }
+
+ }
+}
+
+--------- End of file:
+Pessoa.cs-----------------------------------------------------------------
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070120/5a82bbb0/attachment.html">https://lists.berlios.de/pipermail/caffeine-devel/attachments/20070120/5a82bbb0/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000001.html">[Caffeine-devel] Problems Regarding use of String
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/caffeine-devel">More information about the Caffeine-devel
+mailing list</a><br>
+</body></html>

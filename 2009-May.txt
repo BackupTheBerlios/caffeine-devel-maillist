@@ -1,0 +1,53 @@
+From abhishek.c1984 at gmail.com  Thu May 28 08:30:09 2009
+From: abhishek.c1984 at gmail.com (abhishek reddy)
+Date: Thu, 28 May 2009 12:00:09 +0530
+Subject: [Caffeine-devel] invoking .net dll from java --regarding
+Message-ID: <d9547ce70905272330t886a1d0i48513cc2c215ba26@mail.gmail.com>
+
+hi every one,
+
+I have a requirement, where i need to access .Net dll from java. Possibly
+invoking a dll function from java
+Please let me know if it is possible using caffeine
+
+thanks in advance.
+
+-- 
+Abhishek
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/caffeine-devel/attachments/20090528/6cd66713/attachment.html>
+
+From brunofr at olympum.com  Thu May 28 09:24:28 2009
+From: brunofr at olympum.com (Bruno Fernandez-Ruiz)
+Date: Thu, 28 May 2009 08:24:28 +0100
+Subject: [Caffeine-devel] invoking .net dll from java --regarding
+In-Reply-To: <d9547ce70905272330t886a1d0i48513cc2c215ba26@mail.gmail.com>
+References: <d9547ce70905272330t886a1d0i48513cc2c215ba26@mail.gmail.com>
+Message-ID: <BFD32504-7C07-4B90-8D92-FFE7B89D9862@olympum.com>
+
+Caffeine will not help you with this. to invoke a .net dll function  
+you need to create the CLR, something that is not possible from Java.  
+A possibility though is to use the embedded Mono runtime function,  
+instantiate the Mono CLR from JNI/C, and call the JNI/C function from  
+Java (your own dll).
+
+On 28 May 2009, at 07:30, abhishek reddy wrote:
+
+> hi every one,
+>
+> I have a requirement, where i need to access .Net dll from java.  
+> Possibly invoking a dll function from java
+> Please let me know if it is possible using caffeine
+>
+> thanks in advance.
+>
+> -- 
+> Abhishek
+> _______________________________________________
+> Caffeine-devel mailing list
+> Caffeine-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/caffeine-devel
+
+
+
